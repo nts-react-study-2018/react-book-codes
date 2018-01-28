@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            padding: 50px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/babel">
+        const destination = document.querySelector("#container");
+
+        class Square extends React.Component{
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                const squareStyle = {
+                    height: 150,
+                    backgroundColor: this.props.color,
+                };
+
+                return (
+                    <div style={squareStyle}></div>
+                );
+            }
+        };
+
+        class Label extends React.Component{
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                const labelStyle = {
+                    display: "block",
+                    fontFamily: "sans-serif",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    padding: 13,
+                    margin: 0,
+                };
+
+                return (
+                    <em style={labelStyle}>{this.props.color}</em>
+                );
+            }
+        };
+
+        class Card extends React.Component{
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                const cardStyle = {
+                    height: 200,
+                    width: 150,
+                    padding: 0,
+                    backgroundColor: "#fff",
+                    WebkitFilter: "drop-shadow(0 0 5px #666)",
+                    filter: "drol-shadow(0 0 5px #666)",
+                };
+
+                return (
+                    <div style={cardStyle}>
+                        <Square color={this.props.color}/>
+                        <Label color={this.props.color}/>
+                    </div>
+                );
+            }
+        };
+
+        ReactDOM.render(
+            <Card color="#ff6663"></Card>,
+            destination
+        );
+    </script>
+</body>
+</html>
